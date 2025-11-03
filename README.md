@@ -79,36 +79,36 @@ graph TB
         Y --> Z[🔄 Auto-Retrain<br/>Pipeline]
     end
     
-    style A fill:#FF6B6B,stroke:#C92A2A,stroke-width:3px,color:#fff
-    style B fill:#4ECDC4,stroke:#0B7285,stroke-width:3px,color:#fff
-    style C fill:#4ECDC4,stroke:#0B7285,stroke-width:3px,color:#fff
-    style D fill:#4ECDC4,stroke:#0B7285,stroke-width:3px,color:#fff
-    style E fill:#95E1D3,stroke:#087F5B,stroke-width:2px
-    style F fill:#95E1D3,stroke:#087F5B,stroke-width:2px
-    style G fill:#95E1D3,stroke:#087F5B,stroke-width:2px
+    style A fill:#FF6B6B,stroke:#C92A2A,stroke-width:3px,color:#000
+    style B fill:#4ECDC4,stroke:#0B7285,stroke-width:3px,color:#000
+    style C fill:#4ECDC4,stroke:#0B7285,stroke-width:3px,color:#000
+    style D fill:#4ECDC4,stroke:#0B7285,stroke-width:3px,color:#000
+    style E fill:#95E1D3,stroke:#087F5B,stroke-width:2px,color:#000
+    style F fill:#95E1D3,stroke:#087F5B,stroke-width:2px,color:#000
+    style G fill:#95E1D3,stroke:#087F5B,stroke-width:2px,color:#000
     
-    style H fill:#A8DAFF,stroke:#1971C2,stroke-width:2px
-    style I fill:#A8DAFF,stroke:#1971C2,stroke-width:2px
+    style H fill:#A8DAFF,stroke:#1971C2,stroke-width:2px,color:#000
+    style I fill:#A8DAFF,stroke:#1971C2,stroke-width:2px,color:#000
     style J fill:#1971C2,stroke:#1864AB,stroke-width:4px,color:#fff
     
-    style K fill:#FFD93D,stroke:#F59F00,stroke-width:3px
-    style L fill:#FF6B9D,stroke:#C2255C,stroke-width:3px,color:#fff
-    style M fill:#FF6B9D,stroke:#C2255C,stroke-width:3px,color:#fff
+    style K fill:#FFD93D,stroke:#F59F00,stroke-width:3px,color:#000
+    style L fill:#FF6B9D,stroke:#C2255C,stroke-width:3px,color:#000
+    style M fill:#FF6B9D,stroke:#C2255C,stroke-width:3px,color:#000
     style N fill:#F03E3E,stroke:#C92A2A,stroke-width:4px,color:#fff
     style O fill:#BE4BDB,stroke:#862E9C,stroke-width:3px,color:#fff
     
-    style P fill:#74C0FC,stroke:#1971C2,stroke-width:2px
-    style Q fill:#FFA94D,stroke:#D9480F,stroke-width:2px
-    style R fill:#FFA94D,stroke:#D9480F,stroke-width:2px
-    style S fill:#FFA94D,stroke:#D9480F,stroke-width:2px
-    style T fill:#51CF66,stroke:#2B8A3E,stroke-width:3px,color:#fff
-    style U fill:#51CF66,stroke:#2B8A3E,stroke-width:4px,color:#fff
+    style P fill:#74C0FC,stroke:#1971C2,stroke-width:2px,color:#000
+    style Q fill:#FFA94D,stroke:#D9480F,stroke-width:2px,color:#000
+    style R fill:#FFA94D,stroke:#D9480F,stroke-width:2px,color:#000
+    style S fill:#FFA94D,stroke:#D9480F,stroke-width:2px,color:#000
+    style T fill:#51CF66,stroke:#2B8A3E,stroke-width:3px,color:#000
+    style U fill:#51CF66,stroke:#2B8A3E,stroke-width:4px,color:#000
     
-    style V fill:#B197FC,stroke:#6741D9,stroke-width:2px
-    style W fill:#B197FC,stroke:#6741D9,stroke-width:2px
+    style V fill:#B197FC,stroke:#6741D9,stroke-width:2px,color:#000
+    style W fill:#B197FC,stroke:#6741D9,stroke-width:2px,color:#000
     style X fill:#845EF7,stroke:#5F3DC4,stroke-width:3px,color:#fff
-    style Y fill:#69DB7C,stroke:#2F9E44,stroke-width:2px
-    style Z fill:#69DB7C,stroke:#2F9E44,stroke-width:2px
+    style Y fill:#69DB7C,stroke:#2F9E44,stroke-width:2px,color:#000
+    style Z fill:#69DB7C,stroke:#2F9E44,stroke-width:2px,color:#000
 ```
 
 ---
