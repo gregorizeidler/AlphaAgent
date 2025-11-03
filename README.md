@@ -12,7 +12,7 @@
 
 ![AlphaAgent Evaluation Results](./results/evaluation_AAPL_20251102_233351.png)
 
-*Real trading results: Portfolio evolution, returns distribution, Sharpe ratio, drawdown analysis, and trading behavior on AAPL (2024).*
+*Real trading results: Portfolio evolution, returns distribution, Sharpe ratio, drawdown analysis, and trading behavior on AAPL.*
 
 ---
 
@@ -20,7 +20,7 @@
 
 AlphaAgent is a production-grade Deep Reinforcement Learning system that learns optimal trading policies through interaction with realistic market environments. Unlike traditional backtesting systems, the agent develops its own risk management strategies and adapts to different market regimes.
 
-### Key Performance Metrics (AAPL, 2024)
+### Key Performance Metrics (AAPL)
 
 | Metric | AlphaAgent | Buy & Hold | Improvement |
 |--------|------------|------------|-------------|
@@ -124,7 +124,7 @@ graph TB
 - **Final Portfolio Value**: $12,430
 - **Cumulative Return**: +24.3%
 - **Volatility (annualized)**: 15.2%
-- **Observation**: The agent maintains a smooth equity curve with controlled drawdowns, indicating robust risk management. Notable outperformance during volatile periods (Q2 2024).
+- **Observation**: The agent maintains a smooth equity curve with controlled drawdowns, indicating robust risk management. Notable outperformance during volatile market periods.
 
 **Key Insights:**
 - Agent learns to avoid large losses during market corrections
@@ -788,7 +788,7 @@ position_size *= (1 - current_drawdown / max_drawdown)
 
 ## 📊 Evaluation Results (Latest Run)
 
-### AAPL - November 2, 2024
+### AAPL - Evaluation Results
 
 **Experiment Configuration:**
 - **Training Period**: 2023-01-01 to 2024-01-01 (1 year)
@@ -1229,54 +1229,6 @@ sha256: <compute_and_add_hash>
 
 ---
 
-## ⚠️ Limitations & Future Work
-
-### Current Limitations
-
-1. **Data Source**: Single provider (Yahoo Finance)
-   - Solution: Integrate multiple data sources (Bloomberg, Reuters)
-
-2. **Single Asset**: Currently trades one stock at a time
-   - Solution: Multi-asset portfolio environment (already implemented)
-
-3. **Long-Only Constraint**: No short selling capability
-   - Solution: Enable short positions with realistic borrowing costs and margin requirements
-
-4. **CPU Training**: Slow training on large datasets
-   - Solution: GPU optimization, distributed training
-
-5. **Sentiment Limited**: News-based only
-   - Solution: Add social media (Twitter/Reddit), earnings calls
-
-### Future Improvements
-
-**1. Advanced Architectures:**
-- [ ] Transformer-based policy (attention over time)
-- [ ] Graph Neural Networks (stock correlation networks)
-- [ ] Hierarchical RL (multi-timeframe decisions)
-
-**2. Alternative Algorithms:**
-- [ ] Soft Actor-Critic (SAC) for continuous control
-- [ ] Twin Delayed DDPG (TD3) for deterministic policy
-- [ ] IMPALA for distributed training
-
-**3. Enhanced Features:**
-- [ ] Options data (implied volatility surface)
-- [ ] Order book data (level 2 market depth)
-- [ ] Alternative data (satellite, credit card)
-
-**4. Risk Management:**
-- [ ] VaR/CVaR constraints in action space
-- [ ] Portfolio optimization (Markowitz, Black-Litterman)
-- [ ] Multi-period risk budgeting
-
-**5. Production:**
-- [ ] Real broker integration (Interactive Brokers API)
-- [ ] High-frequency execution (microsecond latency)
-- [ ] Regulatory compliance (MiFID II, Reg NMS)
-
----
-
 ## 📜 Disclaimer
 
 **IMPORTANT: This project is for educational and research purposes only.**
@@ -1303,21 +1255,6 @@ sha256: <compute_and_add_hash>
 
 ---
 
-## 📚 Citation
-
-If you use this project in your research, please cite:
-
-```bibtex
-@software{alphaagent2024,
-  title={AlphaAgent: Deep Reinforcement Learning Trading System},
-  author={Your Name},
-  year={2024},
-  url={https://github.com/yourusername/alphaagent}
-}
-```
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please:
@@ -1326,15 +1263,6 @@ Contributions are welcome! Please:
 3. Commit your changes (`git commit -m 'Add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
----
-
-## 📧 Contact
-
-For questions, issues, or collaboration:
-- **GitHub Issues**: [Create an issue](https://github.com/yourusername/alphaagent/issues)
-- **Email**: your.email@example.com
-- **Twitter**: @yourusername
 
 ---
 
@@ -1364,6 +1292,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ for the intersection of AI and Finance**
-
-*Last Updated: November 3, 2024*
+*Last Updated: January 2025*
