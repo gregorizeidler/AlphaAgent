@@ -1,0 +1,83 @@
+INFO:__main__:============================================================
+INFO:__main__:AlphaAgent Training
+INFO:__main__:============================================================
+INFO:__main__:Ticker: AAPL
+INFO:__main__:Reward Type: sharpe
+INFO:__main__:Total Timesteps: 10000
+INFO:__main__:Use GAF: False
+INFO:__main__:Use Attention: False
+INFO:__main__:============================================================
+INFO:__main__:Creating environment for AAPL
+INFO:alpha_agent.environment.trading_env:Initializing environment for AAPL
+/Users/gregorizeidler/yaho2/alpha_agent/data/data_fetcher.py:55: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  df = df.fillna(method='ffill').fillna(method='bfill')
+INFO:alpha_agent.data.data_fetcher:Fetched 249 days of OHLCV data for AAPL
+INFO:alpha_agent.data.data_fetcher:Fetched 15 fundamental metrics for AAPL
+INFO:alpha_agent.data.data_fetcher:Fetched 10 news items for AAPL
+/Users/gregorizeidler/yaho2/alpha_agent/data/data_fetcher.py:211: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  df = df.fillna(method='bfill').fillna(0)
+INFO:alpha_agent.sentiment.sentiment_analyzer:Using device: cpu
+INFO:alpha_agent.sentiment.sentiment_analyzer:Loaded FinBERT model: ProsusAI/finbert
+WARNING:alpha_agent.sentiment.sentiment_analyzer:No OpenAI API key found. GPT analysis will be disabled.
+INFO:alpha_agent.state.state_representation:Initialized CompleteStateRepresentation: GAF=False, lookback=30
+INFO:alpha_agent.environment.trading_env:Environment initialized: 218 trading days available
+INFO:__main__:Environment created: 218 trading days
+INFO:__main__:Observation space: (210,)
+INFO:__main__:Action space: (2,)
+INFO:alpha_agent.agents.ppo_agent:Initialized TradingFeatureExtractor: input=210, output=256
+INFO:alpha_agent.agents.ppo_agent:Initialized TradingPPOAgent
+INFO:alpha_agent.agents.ppo_agent:  Learning Rate: 0.0003
+INFO:alpha_agent.agents.ppo_agent:  Attention: False
+INFO:alpha_agent.agents.ppo_agent:  Device: auto
+INFO:__main__:Starting training for 10000 timesteps
+INFO:alpha_agent.agents.ppo_agent:Starting training for 10000 timesteps
+Using cpu device
+Wrapping the env with a `Monitor` wrapper
+Wrapping the env in a DummyVecEnv.
+Traceback (most recent call last):
+  File "/Users/gregorizeidler/yaho2/train_agent.py", line 276, in <module>
+    main()
+    ~~~~^^
+  File "/Users/gregorizeidler/yaho2/train_agent.py", line 270, in main
+    train_single_horizon(args)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/gregorizeidler/yaho2/train_agent.py", line 127, in train_single_horizon
+    agent.train(total_timesteps=args.total_timesteps, callback=callback)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gregorizeidler/yaho2/alpha_agent/agents/ppo_agent.py", line 253, in train
+    self.model.learn(
+    ~~~~~~~~~~~~~~~~^
+        total_timesteps=total_timesteps,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        callback=callback,
+        ^^^^^^^^^^^^^^^^^^
+        progress_bar=True
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/gregorizeidler/yaho2/venv/lib/python3.13/site-packages/stable_baselines3/ppo/ppo.py", line 311, in learn
+    return super().learn(
+           ~~~~~~~~~~~~~^
+        total_timesteps=total_timesteps,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        progress_bar=progress_bar,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/gregorizeidler/yaho2/venv/lib/python3.13/site-packages/stable_baselines3/common/on_policy_algorithm.py", line 311, in learn
+    total_timesteps, callback = self._setup_learn(
+                                ~~~~~~~~~~~~~~~~~^
+        total_timesteps,
+        ^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        progress_bar,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/gregorizeidler/yaho2/venv/lib/python3.13/site-packages/stable_baselines3/common/base_class.py", line 431, in _setup_learn
+    self._logger = utils.configure_logger(self.verbose, self.tensorboard_log, tb_log_name, reset_num_timesteps)
+                   ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gregorizeidler/yaho2/venv/lib/python3.13/site-packages/stable_baselines3/common/utils.py", line 287, in configure_logger
+    raise ImportError("Trying to log data to tensorboard but tensorboard is not installed.")
+ImportError: Trying to log data to tensorboard but tensorboard is not installed.

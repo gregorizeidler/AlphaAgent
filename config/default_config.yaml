@@ -1,0 +1,203 @@
+# AlphaAgent Default Configuration
+# This config reproduces the results in README.md
+
+# Random Seeds (for reproducibility)
+seeds:
+  pytorch: 42
+  numpy: 42
+  python: 42
+
+# Data Configuration
+data:
+  ticker: "AAPL"
+  start_date: "2023-01-01"
+  end_date: "2024-01-01"
+  eval_start: "2024-01-01"
+  eval_end: "2024-11-02"
+  lookback_days: 30
+
+# Environment Configuration
+environment:
+  initial_balance: 10000.0
+  transaction_cost: 0.001  # 0.1%
+  spread: 0.0005           # 0.05%
+  base_slippage: 0.0005    # 0.05%
+  market_impact:
+    temporary: 0.001       # 0.1%
+    permanent: 0.0005      # 0.05%
+  max_position: 1.0        # 100% of capital
+  max_leverage: 1.0        # No leverage
+  min_cash_reserve: 0.05   # 5%
+  use_gaf: false           # Use raw prices (not GAF images)
+
+# Risk Management
+risk_management:
+  max_daily_loss: 0.05     # 5% stop-loss
+  max_drawdown: 0.15       # 15% circuit breaker
+  volatility_target: 0.15  # 15% annualized
+  position_sizing:
+    method: "kelly"        # Kelly criterion
+    max_position: 0.50     # 50% per trade
+    stop_loss: 0.05        # 5% per position
+    take_profit: 0.15      # 15% target
+
+# PPO Agent Configuration
+agent:
+  algorithm: "PPO"
+  learning_rate: 0.0003
+  n_steps: 2048
+  batch_size: 64
+  n_epochs: 10
+  gamma: 0.99              # Discount factor
+  gae_lambda: 0.95         # GAE lambda
+  clip_range: 0.2          # PPO clip range
+  ent_coef: 0.01           # Entropy coefficient
+  vf_coef: 0.5             # Value function coefficient
+  max_grad_norm: 0.5       # Gradient clipping
+  
+  # Network Architecture
+  network:
+    feature_extractor:
+      hidden_dims: [256, 128, 64]
+      activation: "relu"
+      dropout: 0.2
+    actor:
+      hidden_dims: [32]
+      activation: "tanh"
+    critic:
+      hidden_dims: [32]
+      activation: "tanh"
+
+# State Representation
+state:
+  dimensions:
+    price_window: 150      # 30 days × 5 OHLCV
+    fundamentals: 14       # PE, ROE, etc.
+    sentiment: 38          # 32 embeddings + 6 aggregated
+    technical: 5           # RSI, MACD, BB, ATR, Vol
+    portfolio: 3           # Position, cash, value
+    total: 210
+  
+  # Sentiment Analysis
+  sentiment:
+    model: "ProsusAI/finbert"
+    embedding_dim: 768
+    pca_dim: 32
+    aggregations: 6        # mean, std, pos, neg, neu, score
+  
+  # Technical Indicators
+  technical_indicators:
+    - name: "RSI"
+      period: 14
+    - name: "MACD"
+      fast: 12
+      slow: 26
+      signal: 9
+    - name: "Bollinger_Bands"
+      period: 20
+      std: 2
+    - name: "ATR"
+      period: 14
+    - name: "Volume_Ratio"
+      period: 20
+
+# Reward Function
+reward:
+  type: "composite"
+  components:
+    sharpe_ratio:
+      weight: 0.40
+      window: 30
+      risk_free_rate: 0.02  # 2% annual
+    sortino_ratio:
+      weight: 0.30
+      window: 30
+      risk_free_rate: 0.02
+    profit_factor:
+      weight: 0.15
+    drawdown_penalty:
+      weight: 0.10
+    transaction_cost:
+      weight: 0.05
+
+# Training Configuration
+training:
+  total_timesteps: 50000
+  eval_freq: 5000
+  save_freq: 10000
+  log_interval: 100
+  tensorboard: true
+  callbacks:
+    - "TensorboardCallback"
+    - "CheckpointCallback"
+    - "ProgressBarCallback"
+
+# Evaluation Configuration
+evaluation:
+  n_episodes: 10
+  deterministic: true
+  render: false
+  save_plots: true
+  explainability:
+    enabled: true
+    n_explain: 10
+    methods: ["shap", "lime"]
+
+# Advanced Features
+advanced:
+  # Market Regime Detection
+  regime_detection:
+    enabled: true
+    method: "hmm"          # Hidden Markov Model
+    n_regimes: 3           # Bull, Bear, Sideways
+    features: ["volatility", "trend", "volume"]
+  
+  # Ensemble Agent
+  ensemble:
+    enabled: false
+    agents: ["bull", "bear", "neutral"]
+    meta_agent: true
+  
+  # Walk-Forward Analysis
+  walk_forward:
+    enabled: false
+    train_window: 180      # 6 months
+    test_window: 30        # 1 month
+    step_size: 30          # 1 month
+
+# Production Settings
+production:
+  paper_trading:
+    enabled: false
+    broker: "alpaca"       # or "interactive_brokers"
+  
+  auto_retrain:
+    enabled: false
+    trigger_sharpe: 1.0    # Retrain if Sharpe < 1.0
+    trigger_window: 14     # 2 weeks
+    validation_method: "oos"
+  
+  alerts:
+    enabled: false
+    channels: ["email", "slack"]
+    thresholds:
+      critical_drawdown: 0.10
+      daily_loss: 0.03
+      low_sharpe: 1.5
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "training_output.log"
+  tensorboard_dir: "tensorboard_logs"
+
+# Output Paths
+paths:
+  models: "./models"
+  results: "./results"
+  plots: "./plots"
+  logs: "./logs"
+  tensorboard: "./tensorboard_logs"
+  data_cache: "./data_cache"
+

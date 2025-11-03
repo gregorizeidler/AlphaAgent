@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  # Training Service
+  train:
+    build: .
+    volumes:
+      - ./models:/app/models
+      - ./results:/app/results
+      - ./logs:/app/logs
+      - ./tensorboard_logs:/app/tensorboard_logs
+    command: python train_agent.py --ticker AAPL --timesteps 50000
+    environment:
+      - PYTHONUNBUFFERED=1
+  
+  # Evaluation Service
+  evaluate:
+    build: .
+    volumes:
+      - ./models:/app/models
+      - ./results:/app/results
+      - ./plots:/app/plots
+    command: python evaluate_agent.py --model-path ./models/best_model.zip --ticker AAPL
+    depends_on:
+      - train
+  
+  # Dashboard Service
+  dashboard:
+    build: .
+    ports:
+      - "8050:8050"
+    volumes:
+      - ./models:/app/models
+      - ./results:/app/results
+    command: python live_dashboard.py --ticker AAPL --port 8050
+    environment:
+      - PYTHONUNBUFFERED=1
+  
+  # TensorBoard Service
+  tensorboard:
+    image: tensorflow/tensorflow:latest
+    ports:
+      - "6006:6006"
+    volumes:
+      - ./tensorboard_logs:/logs
+    command: tensorboard --logdir=/logs --host=0.0.0.0
+
