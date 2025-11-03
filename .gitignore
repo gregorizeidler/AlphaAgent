@@ -39,24 +39,30 @@ env/
 .ipynb_checkpoints
 
 # Models and logs
-models/
-logs/
+models/*.zip
+logs/*.log
 tensorboard_logs/
-results/
-backtest_results/
-*.zip
 
-# Data
-data/
-*.csv
+# Keep model metadata but not large files
+!models/*.yaml
+!models/*.json
+
+# Results - keep plots and CSVs for documentation
+!results/*.png
+!results/*.csv
+
+# Keep plots for README
+!plots/*.png
+
+# Data cache (but not results)
+data_cache/
 *.pkl
 *.h5
 
 # MacOS
 .DS_Store
 
-# Plots
-*.png
-*.jpg
-*.pdf
+# Temporary plots only
+temp_*.png
+scratch_*.png
 

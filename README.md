@@ -8,6 +8,14 @@
 
 ---
 
+## 📊 Latest Evaluation Results
+
+![AlphaAgent Evaluation Results](./results/evaluation_AAPL_20251102_233351.png)
+
+*Real trading results: Portfolio evolution, returns distribution, Sharpe ratio, drawdown analysis, and trading behavior on AAPL (2024).*
+
+---
+
 ## 📊 Executive Summary
 
 AlphaAgent is a production-grade Deep Reinforcement Learning system that learns optimal trading policies through interaction with realistic market environments. Unlike traditional backtesting systems, the agent develops its own risk management strategies and adapts to different market regimes.
@@ -29,51 +37,78 @@ AlphaAgent is a production-grade Deep Reinforcement Learning system that learns 
 
 ```mermaid
 graph TB
-    subgraph "Data Pipeline"
-        A[Yahoo Finance API] --> B[OHLCV Data]
-        A --> C[Fundamental Data]
-        A --> D[News Data]
-        B --> E[Technical Indicators]
-        C --> F[Fundamental Encoder]
-        D --> G[FinBERT Sentiment]
+    subgraph "📊 Data Pipeline"
+        A[🌐 Yahoo Finance API] --> B[📈 OHLCV Data]
+        A --> C[💰 Fundamental Data]
+        A --> D[📰 News Data]
+        B --> E[📊 Technical Indicators]
+        C --> F[🔢 Fundamental Encoder]
+        D --> G[🤖 FinBERT Sentiment]
     end
     
-    subgraph "State Representation"
-        E --> H[Price Window<br/>30 days × 5 OHLCV]
+    subgraph "🧠 State Representation"
+        E --> H[⏱️ Price Window<br/>30 days × 5 OHLCV]
         F --> H
-        G --> I[Sentiment Embedding<br/>32 dimensions]
+        G --> I[💭 Sentiment Embedding<br/>32 dimensions]
         I --> H
-        H --> J[Multi-Modal State<br/>210 dimensions]
+        H --> J[🎯 Multi-Modal State<br/>210 dimensions]
     end
     
-    subgraph "Deep RL Agent"
-        J --> K[Feature Extractor<br/>Dense Layers]
-        K --> L[Actor Network]
-        K --> M[Critic Network]
-        L --> N[Action Distribution<br/>Buy/Sell/Hold]
-        M --> O[Value Estimation]
+    subgraph "🚀 Deep RL Agent"
+        J --> K[⚡ Feature Extractor<br/>Dense Layers]
+        K --> L[🎭 Actor Network]
+        K --> M[👁️ Critic Network]
+        L --> N[🎲 Action Distribution<br/>Buy/Sell/Hold]
+        M --> O[💎 Value Estimation]
     end
     
-    subgraph "Trading Environment"
-        N --> P[Position Manager]
-        P --> Q[Transaction Costs]
-        Q --> R[Slippage Model]
-        R --> S[Market Impact]
-        S --> T[Risk Manager]
-        T --> U[Reward Signal]
+    subgraph "💼 Trading Environment"
+        N --> P[📦 Position Manager]
+        P --> Q[💸 Transaction Costs]
+        Q --> R[⚠️ Slippage Model]
+        R --> S[🌊 Market Impact]
+        S --> T[🛡️ Risk Manager]
+        T --> U[🎁 Reward Signal]
         U --> K
     end
     
-    subgraph "Production Systems"
-        V[Market Regime<br/>Detector] --> W[Ensemble Agent]
-        W --> X[Meta-Agent]
-        X --> Y[Paper Trading]
-        Y --> Z[Auto-Retrain<br/>Pipeline]
+    subgraph "🏭 Production Systems"
+        V[🌡️ Market Regime<br/>Detector] --> W[👥 Ensemble Agent]
+        W --> X[🧙 Meta-Agent]
+        X --> Y[📝 Paper Trading]
+        Y --> Z[🔄 Auto-Retrain<br/>Pipeline]
     end
     
-    style J fill:#e1f5ff
-    style N fill:#ffe1e1
-    style U fill:#e1ffe1
+    style A fill:#FF6B6B,stroke:#C92A2A,stroke-width:3px,color:#fff
+    style B fill:#4ECDC4,stroke:#0B7285,stroke-width:3px,color:#fff
+    style C fill:#4ECDC4,stroke:#0B7285,stroke-width:3px,color:#fff
+    style D fill:#4ECDC4,stroke:#0B7285,stroke-width:3px,color:#fff
+    style E fill:#95E1D3,stroke:#087F5B,stroke-width:2px
+    style F fill:#95E1D3,stroke:#087F5B,stroke-width:2px
+    style G fill:#95E1D3,stroke:#087F5B,stroke-width:2px
+    
+    style H fill:#A8DAFF,stroke:#1971C2,stroke-width:2px
+    style I fill:#A8DAFF,stroke:#1971C2,stroke-width:2px
+    style J fill:#1971C2,stroke:#1864AB,stroke-width:4px,color:#fff
+    
+    style K fill:#FFD93D,stroke:#F59F00,stroke-width:3px
+    style L fill:#FF6B9D,stroke:#C2255C,stroke-width:3px,color:#fff
+    style M fill:#FF6B9D,stroke:#C2255C,stroke-width:3px,color:#fff
+    style N fill:#F03E3E,stroke:#C92A2A,stroke-width:4px,color:#fff
+    style O fill:#BE4BDB,stroke:#862E9C,stroke-width:3px,color:#fff
+    
+    style P fill:#74C0FC,stroke:#1971C2,stroke-width:2px
+    style Q fill:#FFA94D,stroke:#D9480F,stroke-width:2px
+    style R fill:#FFA94D,stroke:#D9480F,stroke-width:2px
+    style S fill:#FFA94D,stroke:#D9480F,stroke-width:2px
+    style T fill:#51CF66,stroke:#2B8A3E,stroke-width:3px,color:#fff
+    style U fill:#51CF66,stroke:#2B8A3E,stroke-width:4px,color:#fff
+    
+    style V fill:#B197FC,stroke:#6741D9,stroke-width:2px
+    style W fill:#B197FC,stroke:#6741D9,stroke-width:2px
+    style X fill:#845EF7,stroke:#5F3DC4,stroke-width:3px,color:#fff
+    style Y fill:#69DB7C,stroke:#2F9E44,stroke-width:2px
+    style Z fill:#69DB7C,stroke:#2F9E44,stroke-width:2px
 ```
 
 ---
